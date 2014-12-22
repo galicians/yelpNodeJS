@@ -1,17 +1,24 @@
     
 module.exports = function(grunt) {
 
-    grunt.initConfig({
-        jshint : {
-            files : ['lib/*/*js','models/*/*.js']
-        },
-        watch : {
-            files : ['lib/*/*js','models/*/*.js'],
-            tasks : ['jshint']
+  grunt.initConfig({
+    jshint: {
+      files: ['Gruntfile.js', 'models/**/*.js', 'test/*.js', 'lib/*.js'],
+      options: {
+        globals: {
+          jQuery: true
         }
-    });
+      }
+    },
+    watch: {
+      files: ['<%= jshint.files %>'],
+      tasks: ['jshint']
+    }
+  });
 
-    grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  grunt.registerTask('default', ['jshint']);
 
 };
