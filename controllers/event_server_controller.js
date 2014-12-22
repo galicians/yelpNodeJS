@@ -21,7 +21,11 @@ exports.findSingle = function(req, res){
         if(err){
             res.send(500);
         } else {
-            res.send(404);
+            if(data){
+                res.send(200, data);
+            } else {
+                res.send(404);
+            }
         }
     });
 };

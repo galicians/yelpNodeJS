@@ -70,5 +70,13 @@ describe("Event Controller", function() {
             controller.findSingle(req, res);
             statusCode.should.equal(500);
         });
+
+        it("should return data when successful", function(){
+            EventModel.findById = function(id, callback){
+                callback(undefined, {id: id, name: 'Test Event'});
+            };
+            controller.findSingle(req, res);
+            sentData.id.should.equal(1);
+        });
     });
 });
