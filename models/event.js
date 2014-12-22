@@ -1,9 +1,7 @@
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    EventSchema = new Schema({
-        ratings : []
-});
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var EventSchema = new Schema({ ratings: [] });
 
 EventSchema.methods.getTotalRating = function(){
     var totalRatings = 0;
