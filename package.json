@@ -14,5 +14,8 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "mongoose": "^3.8.21"
   }
 }

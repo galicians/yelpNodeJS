@@ -1,11 +1,8 @@
 
-var Event = function(args) {
-    var event = {};
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    EventSchema = new Schema({
+        ratings : []
+});
 
-     event.ratings = args.ratings || [1,2,3]; 
-     
-     return event;
-};
-
-
-module.exports = Event;
+module.exports = mongoose.model('Event', EventSchema);
