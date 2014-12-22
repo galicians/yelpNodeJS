@@ -18,6 +18,10 @@ exports.getAllEvents = function(req, res){
 
 exports.findSingle = function(req, res){
     EventModel.findById(req.params.id, function(err, data){
-        res.send(404);
+        if(err){
+            res.send(500);
+        } else {
+            res.send(404);
+        }
     });
 };

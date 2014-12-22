@@ -25,7 +25,7 @@ describe("Event Controller", function() {
     });
 
     describe("When fetching all events", function(){
-        
+
         it("should return 200", function(){
             controller.getAllEvents(req, res);
             statusCode.should.equal(200);
@@ -47,20 +47,28 @@ describe("Event Controller", function() {
     });
 
     describe("When fetching a single event", function(){
+        beforeEach(function() {
+            req = { 
+                params : {
+                id : 1
+                }
+            };
+        });
+
         it("should return 404 when not found", function(){
             EventModel.findById = function(id, callback){
                 callback(undefined,undefined);
             };
-
-            req = {
-                params : {
-                    id: 1
-                }
-            };
-
             controller.findSingle(req, res);
-
             statusCode.should.equal(404);
+        });
+
+        it("should return 500 when find errors", function(){
+            EventModel.findById = findById = function(id, callback){
+                callback({err:1}, undefined);
+            };
+            controller.findSingle(req, res);
+            statusCode.should.equal(500);
         });
     });
 });
